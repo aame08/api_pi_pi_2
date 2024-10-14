@@ -1,0 +1,59 @@
+﻿<Page x:Class="api_pi_2.Views.Registration"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:api_pi_2.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Registration">
+
+    <Grid Background="#E2E2E2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Регистрация аккаунта в FrogStore" FontSize="38" FontWeight="Bold" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1">
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Text="Введите фамилию: " Width="130" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                <TextBox x:Name="tbSurname" Width="150" Height="25"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Text="Введите имя: " Width="130" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                <TextBox x:Name="tbName" Width="150" Height="25"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Text="Введите отчество: " Width="130" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                <TextBox x:Name="tbPatronymic" Width="150" Height="25"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Text="Введите логин: " Width="130" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                <TextBox x:Name="tbLogin" Width="150" Height="25"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Text="Введите пароль: " Width="130" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                <TextBox x:Name="tbPassword" Width="150" Height="25" Visibility="Collapsed"/>
+                <PasswordBox x:Name="pbPassword" PasswordChar="*" Width="150" Height="25"/>
+                <ToggleButton x:Name="toggleShowPassword" Content="👁" BorderBrush="{x:Null}" Background="{x:Null}" Click="toggleShowPassword_Click"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="15" HorizontalAlignment="Center">
+                <Button x:Name="bExit" Content="Отмена" Height="35" Width="65" Style="{StaticResource GrayButton}" Margin="5" Click="bExit_Click"/>
+                <Button x:Name="bEnter" Content="Зарегистрироваться" Height="35" Width="130" Style="{StaticResource GrayButton}" Margin="5" Click="bEnter_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

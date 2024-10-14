@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="frog.png" />
+    <None Remove="Resources\D034T5.jpg" />
+    <None Remove="Resources\F933T5.jpg" />
+    <None Remove="Resources\H023R8.jpg" />
+    <None Remove="Resources\H937R3.jpg" />
+    <None Remove="Resources\K478R4.jpg" />
+    <None Remove="Resources\P927R2.jpg" />
+    <None Remove="Resources\P936E4.jpg" />
+    <None Remove="Resources\picture.png" />
+    <None Remove="Resources\S563T4.jpg" />
+    <None Remove="Resources\V483R7.jpg" />
+    <None Remove="Resources\V783T5.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\H937R3.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="frog.png" />
+    <Resource Include="Resources\D034T5.jpg" />
+    <Resource Include="Resources\F933T5.jpg" />
+    <Resource Include="Resources\H023R8.jpg" />
+    <Resource Include="Resources\K478R4.jpg" />
+    <Resource Include="Resources\P927R2.jpg" />
+    <Resource Include="Resources\P936E4.jpg" />
+    <Resource Include="Resources\picture.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\S563T4.jpg" />
+    <Resource Include="Resources\V483R7.jpg" />
+    <Resource Include="Resources\V783T5.jpg" />
+  </ItemGroup>
+
+</Project>
