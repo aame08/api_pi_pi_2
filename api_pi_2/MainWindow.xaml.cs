@@ -48,11 +48,20 @@ namespace api_pi_2
             var res = await Api.Auth(login: tbLogin.Text, password: pbPassword.Password);
             if (res is User)
             {
-                App.currentUser = res;
                 MessageBox.Show(res.Name.ToString());
-                ProductsScreen productsScreen = new ProductsScreen();
-                mainWindow.Close();
-                productsScreen.Show();
+                if (res.Role == 2)
+                {
+                    AdminWindow adminWindow = new AdminWindow();
+                    mainWindow.Close();
+                    adminWindow.Show();
+                }
+                else
+                {
+                    App.currentUser = res;
+                    ProductsScreen productsScreen = new ProductsScreen();
+                    mainWindow.Close();
+                    productsScreen.Show();
+                }
             }
             else { MessageBox.Show("Пользователь не найден."); }
         }

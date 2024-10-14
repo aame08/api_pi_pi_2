@@ -29,12 +29,12 @@ public partial class Product
     public string Status { get; set; } = null!;
 
     public int QuantityInStock { get; set; }
-    [JsonIgnore]
+
     public virtual Manufacturer Manufacturer { get; set; } = null!;
     [JsonIgnore]
     public virtual ICollection<Orderproduct> Orderproducts { get; set; } = new List<Orderproduct>();
 
     public virtual Producttype ProductType { get; set; } = null!;
-    [JsonIgnore]
+
     public virtual Supplier Supplier { get; set; } = null!;
 }

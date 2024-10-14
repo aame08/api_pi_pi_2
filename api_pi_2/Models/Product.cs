@@ -46,5 +46,7 @@ namespace api_pi_2.Models
         public int QuantityInStock { get; set; }
 
         public virtual Producttype ProductType { get; set; } = null!;
+        public virtual Manufacturer Manufacturer { get; set; } = null!;
+        public virtual Supplier Supplier { get; set; } = null!;
     }
 }
