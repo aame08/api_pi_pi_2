@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
 
         <DockPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0, 5, 0, 5">
-            <Button Content="Закрыть" DockPanel.Dock="Left" Margin="0, 0, 10, 0" Style="{StaticResource GrayButton}" Height="25" Width="60" Command="{Binding CloseAddExhibitWnd}"/>
+            <Button x:Name="bExit" Content="Закрыть" DockPanel.Dock="Left" Margin="0, 0, 10, 0" Style="{StaticResource GrayButton}" Height="25" Width="60" Click="bExit_Click"/>
             <TextBlock Text="Заполните все поля, чтобы добавить экспонат." FontSize="19" FontWeight="Bold" TextWrapping="Wrap"/>
         </DockPanel>
 

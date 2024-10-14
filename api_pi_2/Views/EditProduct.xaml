@@ -8,7 +8,83 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="EditProduct">
 
-    <Grid>
-        
+    <Grid Background="#E2E2E2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0, 5, 0, 5">
+            <Button x:Name="bExit" Content="Закрыть" DockPanel.Dock="Left" Margin="0, 0, 10, 0" Style="{StaticResource GrayButton}" Height="25" Width="60" Click="bExit_Click"/>
+            <TextBlock Text="Редактирование или удаление товара." FontSize="19" FontWeight="Bold" TextWrapping="Wrap"/>
+        </DockPanel>
+
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Артикль: " Width="110" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBox x:Name="tbArticle" Text="{Binding ProductArticleNumber}" Width="150" Height="25" IsReadOnly="True"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Название: " Width="110" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBox x:Name="tbName" Text="{Binding Name}" Width="150" Height="25"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Описание: " Width="110" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBox x:Name="tbDescription" Text="{Binding Description}" Width="150" Height="25"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Цена: " Width="110" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBox x:Name="tbCost" Text="{Binding Cost, StringFormat={}{0:N0}}" Width="150" Height="25"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Тип: " Width="110" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                        <ComboBox x:Name="cbType" SelectedValue="{Binding ProductType.ProductTypeId}" Width="150" Height="25"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Изображение: " Width="110" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBox x:Name="tbImage" Text="{Binding Photo}" Width="150" Height="25"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Поставщик: " Width="110" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                        <ComboBox x:Name="cbSupplier" SelectedValue="{Binding Supplier.SupplierId}" Width="150" Height="25"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Производитель: " Width="110" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                        <ComboBox x:Name="cbManufacturer" SelectedValue="{Binding Manufacturer.ManufacturerId}" Width="150" Height="25"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Количество: " Width="110" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBox x:Name="tbQuantity" Text="{Binding QuantityInStock}" Width="150" Height="25"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Скидка: " Width="110" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBox x:Name="tbCurrentDiscount" Text="{Binding CurrentDiscount}" Width="150" Height="25"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Макс. скидка: " Width="110" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBox x:Name="tbMaxDiscount" Text="{Binding ProductMaxDiscount}" Width="150" Height="25"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Статус: " Width="110" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBox x:Name="tbStatus" Text="{Binding Status}" Width="150" Height="25"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            
+            <StackPanel Orientation="Horizontal" Margin="15" HorizontalAlignment="Center">
+                <Button x:Name="bEdit" Content="Изменить" Style="{StaticResource GrayButton}" Height="35" Width="90" Click="bEdit_Click" Margin="5"/>
+                <Button x:Name="bDelete" Content="Удалить" Style="{StaticResource GrayButton}" Height="35" Width="90" Click="bDelete_Click" Margin="5"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

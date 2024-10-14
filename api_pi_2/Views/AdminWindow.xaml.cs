@@ -21,7 +21,7 @@ namespace api_pi_2.Views
             LoadProducts();
         }
 
-        private async void LoadProducts()
+        public async void LoadProducts()
         {
             var res = await Api.GetProducts();
             allProducts = res;

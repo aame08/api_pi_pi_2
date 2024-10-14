@@ -106,12 +106,18 @@ namespace api_pi_2.Views
                     if (res != null)
                     {
                         MessageBox.Show("Товар добавлен.");
+                        AdminWindow.adminWindow.LoadProducts();
                         addProduct.Visibility = Visibility.Hidden;
                     }
                 }
                 else { MessageBox.Show("Неверный путь к файлу изображения."); }
             }
             else { MessageBox.Show("Неверный формат данных"); }
+        }
+
+        private void bExit_Click(object sender, RoutedEventArgs e)
+        {
+            addProduct.Visibility = Visibility.Hidden;
         }
     }
 }

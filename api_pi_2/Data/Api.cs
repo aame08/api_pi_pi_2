@@ -45,7 +45,6 @@ namespace api_pi_2.Data
                 if (result.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     return JsonConvert.DeserializeObject<List<Product>>((await result.Content.ReadAsStringAsync()));
-
                 }
                 return [];
             }
@@ -100,6 +99,30 @@ namespace api_pi_2.Data
                     return JsonConvert.DeserializeObject<Product>(await result.Content.ReadAsStringAsync());
                 }
                 return null;
+            }
+        }
+
+        public static async Task<bool> EditProduct(string article, ProductDTO productDTO)
+        {
+            using (var client = new HttpClient())
+            {
+                var json = JsonConvert.SerializeObject(productDTO);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var result = await client.PutAsync($"https://localhost:7088/api/Product/{article}", content);
+                if (result.StatusCode == System.Net.HttpStatusCode.NoContent)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+        public static async Task<bool> DeleteProduct(string article)
+        {
+            using (var client = new HttpClient())
+            {
+                var result = await client.DeleteAsync($"https://localhost:7088/api/Product/{article}");
+                return result.StatusCode == System.Net.HttpStatusCode.NoContent;
             }
         }
     }

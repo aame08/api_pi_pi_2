@@ -45,6 +45,43 @@ namespace api_pi_pi_2.Controllers
             Program.context.SaveChanges();
             return StatusCode(201, newProduct);
         }
+
+        [HttpPut("{article}")]
+        public ActionResult<Product> Updating(string article, [FromBody] ProductDTO productDTO)
+        {
+            var existingProduct = Program.context.Products.FirstOrDefault(p => p.ProductArticleNumber == article);
+            if (existingProduct != null)
+            {
+                existingProduct.Name = productDTO.Name;
+                existingProduct.Cost = productDTO.Cost;
+                existingProduct.Description = productDTO.Description;
+                existingProduct.ProductTypeId = productDTO.ProductTypeId;
+                existingProduct.Photo = productDTO.Photo;
+                existingProduct.SupplierId = productDTO.SupplierId;
+                existingProduct.ProductMaxDiscount = productDTO.ProductMaxDiscount;
+                existingProduct.ManufacturerId = productDTO.ManufacturerId;
+                existingProduct.CurrentDiscount = productDTO.CurrentDiscount;
+                existingProduct.Status = productDTO.Status;
+                existingProduct.QuantityInStock = productDTO.QuantityInStock;
+
+                Program.context.SaveChanges();
+
+                return NoContent();
+            }
+            else { return NotFound(); }
+        }
+        [HttpDelete("{article}")]
+        public ActionResult Deleting(string article)
+        {
+            var existingProduct = Program.context.Products.FirstOrDefault(p => p.ProductArticleNumber == article);
+            if (existingProduct != null)
+            {
+                Program.context.Products.Remove(existingProduct);
+                Program.context.SaveChanges();
+                return NoContent();
+            }
+            else { return NotFound(); }
+        }
         //[HttpGet("{article}")]
         //public ActionResult<Product> Get(string article)
         //{
