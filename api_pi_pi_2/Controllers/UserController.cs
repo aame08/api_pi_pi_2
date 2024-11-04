@@ -37,5 +37,30 @@ namespace api_pi_pi_2.Controllers
             Program.context.SaveChanges();
             return StatusCode(201, newUser);
         }
+
+        [HttpPut("{idUser}")]
+        public ActionResult<User> UpdatingUser(int idUser, [FromBody] UserDTO userDto)
+        {
+            var existingUser = Program.context.Users.FirstOrDefault(u => u.UserId == idUser);
+            if (existingUser != null)
+            {
+                if (existingUser.Login != userDto.Login)
+                {
+                    var isLoginUnique = Program.context.Users.Any(u => u.Login == userDto.Login);
+                    if (isLoginUnique) { return Conflict("Пользователь с таким логином уже существует."); }
+                }
+
+                existingUser.Surname = userDto.Surname;
+                existingUser.Name = userDto.Name;
+                existingUser.Patronymic = userDto.Patronymic;
+                existingUser.Login = userDto.Login;
+                existingUser.Password = userDto.Password;
+
+                Program.context.SaveChanges();
+
+                return NoContent();
+            }
+            else { return NotFound(); }
+        }
     }
 }

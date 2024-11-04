@@ -12,7 +12,7 @@ namespace api_pi_2.Data
         {
             using (var client = new HttpClient())
             {
-                var result = client.GetAsync($"https://localhost:7088/api/User/{login}, {password}").Result;
+                var result = client.GetAsync($"http://localhost:5184/api/User/{login}, {password}").Result;
                 if (result.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     return JsonConvert.DeserializeObject<User>((await result.Content.ReadAsStringAsync()));
@@ -28,7 +28,7 @@ namespace api_pi_2.Data
                 var json = JsonConvert.SerializeObject(userDto);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                var result = await client.PostAsync("https://localhost:7088/api/User/register", content);
+                var result = await client.PostAsync("http://localhost:5184/api/User/register", content);
                 if (result.StatusCode == System.Net.HttpStatusCode.Created)
                 {
                     return JsonConvert.DeserializeObject<User>(await result.Content.ReadAsStringAsync());
@@ -41,7 +41,7 @@ namespace api_pi_2.Data
         {
             using (var client = new HttpClient())
             {
-                var result = client.GetAsync($"https://localhost:7088/api/Product").Result;
+                var result = client.GetAsync($"http://localhost:5184/api/Product").Result;
                 if (result.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     return JsonConvert.DeserializeObject<List<Product>>((await result.Content.ReadAsStringAsync()));
@@ -53,7 +53,7 @@ namespace api_pi_2.Data
         {
             using (var client = new HttpClient())
             {
-                var result = client.GetAsync("https://localhost:7088/api/ProductType").Result;
+                var result = client.GetAsync("http://localhost:5184/api/ProductType").Result;
                 if (result.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     return JsonConvert.DeserializeObject<List<Producttype>>(await result.Content.ReadAsStringAsync());
@@ -65,7 +65,7 @@ namespace api_pi_2.Data
         {
             using (var client = new HttpClient())
             {
-                var result = client.GetAsync("https://localhost:7088/api/Supplier").Result;
+                var result = client.GetAsync("http://localhost:5184/api/Supplier").Result;
                 if (result.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     return JsonConvert.DeserializeObject<List<Supplier>>(await result.Content.ReadAsStringAsync());
@@ -77,7 +77,7 @@ namespace api_pi_2.Data
         {
             using (var client = new HttpClient())
             {
-                var result = client.GetAsync("https://localhost:7088/api/Manufacturer").Result;
+                var result = client.GetAsync("http://localhost:5184/api/Manufacturer").Result;
                 if (result.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     return JsonConvert.DeserializeObject<List<Manufacturer>>(await result.Content.ReadAsStringAsync());
@@ -93,7 +93,7 @@ namespace api_pi_2.Data
                 var json = JsonConvert.SerializeObject(productDTO);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                var result = await client.PostAsync("https://localhost:7088/api/Product/adding", content);
+                var result = await client.PostAsync("http://localhost:5184/api/Product/adding", content);
                 if (result.StatusCode == System.Net.HttpStatusCode.Created)
                 {
                     return JsonConvert.DeserializeObject<Product>(await result.Content.ReadAsStringAsync());
@@ -109,11 +109,8 @@ namespace api_pi_2.Data
                 var json = JsonConvert.SerializeObject(productDTO);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                var result = await client.PutAsync($"https://localhost:7088/api/Product/{article}", content);
-                if (result.StatusCode == System.Net.HttpStatusCode.NoContent)
-                {
-                    return true;
-                }
+                var result = await client.PutAsync($"http://localhost:5184/api/Product/{article}", content);
+                if (result.StatusCode == System.Net.HttpStatusCode.NoContent) { return true; }
                 return false;
             }
         }
@@ -121,8 +118,21 @@ namespace api_pi_2.Data
         {
             using (var client = new HttpClient())
             {
-                var result = await client.DeleteAsync($"https://localhost:7088/api/Product/{article}");
+                var result = await client.DeleteAsync($"http://localhost:5184/api/Product/{article}");
                 return result.StatusCode == System.Net.HttpStatusCode.NoContent;
+            }
+        }
+
+        public static async Task<bool> EditAccount(int id, UserDTO userDTO)
+        {
+            using (var client = new HttpClient())
+            {
+                var json = JsonConvert.SerializeObject(userDTO);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var result = await client.PutAsync($"http://localhost:5184/api/User/{id}", content);
+                if (result.StatusCode == System.Net.HttpStatusCode.NoContent) { return true; }
+                return false;
             }
         }
     }

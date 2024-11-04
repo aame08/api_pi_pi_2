@@ -74,5 +74,11 @@ namespace api_pi_2.Views
 
             DisplayProducts(currentProducts);
         }
+
+        private void bAccount_Click(object sender, RoutedEventArgs e)
+        {
+            Account account = new Account(App.currentUser);
+            frame.NavigationService.Navigate(account, Visibility.Visible);
+        }
     }
 }

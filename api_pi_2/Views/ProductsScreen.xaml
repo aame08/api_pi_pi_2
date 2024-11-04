@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:api_pi_2.Views"
         mc:Ignorable="d"
-        Title="ProductsScreen" Height="450" Width="800" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen" Icon="/frog.png">
+        Title="FrogStore" Height="450" Width="800" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen" Icon="/frog.png">
     <Grid Background="#E2E2E2">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5"/>
@@ -20,9 +20,11 @@
 
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Margin="0, 5, 0, 5" VerticalAlignment="Center" HorizontalAlignment="Left">
             <Button Content="Выйти" Style="{StaticResource GrayButton}" Height="25" Margin="5" Click="Button_Click"/>
-            <TextBlock Text="Аккаунт: " FontSize="18" FontWeight="Bold" VerticalAlignment="Center"/>
+            <TextBlock Text="Добро пожаловать, " FontSize="18" FontWeight="Bold" VerticalAlignment="Center"/>
             <Label x:Name="username" FontSize="18" VerticalAlignment="Center"/>
         </StackPanel>
+
+        <Button x:Name="bAccount" Content="Аккаунт" Style="{StaticResource GrayButton}" Height="25" Grid.Row="0" Grid.Column="1" Margin="6" VerticalAlignment="Center" HorizontalAlignment="Right" Click="bAccount_Click"/>
 
         <Grid Grid.Row="1" Grid.Column="1">
             <Grid.RowDefinitions>
@@ -47,5 +49,6 @@
                 </ListView.ItemsPanel>
             </ListView>
         </Grid>
+        <Frame x:Name="frame" NavigationUIVisibility="Hidden" Grid.Row="0" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="3"/>
     </Grid>
 </Window>

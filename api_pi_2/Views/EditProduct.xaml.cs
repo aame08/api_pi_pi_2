@@ -130,7 +130,7 @@ namespace api_pi_2.Views
                 ProductArticleNumber = tbArticle.Text,
                 Name = tbName.Text,
                 Measure = "шт.",
-                Cost = decimal.TryParse(tbCost.Text, out decimal cost) ? cost : 0,
+                Cost = decimal.Parse(tbCost.Text),
                 Description = string.IsNullOrWhiteSpace(tbDescription.Text) ? null : tbDescription.Text,
                 ProductTypeId = (int)cbType.SelectedValue,
                 Photo = string.IsNullOrWhiteSpace(tbImage.Text) ? null : tbImage.Text,
@@ -138,7 +138,7 @@ namespace api_pi_2.Views
                 ProductMaxDiscount = int.TryParse(tbMaxDiscount.Text, out int maxDiscount) ? maxDiscount : 0,
                 CurrentDiscount = int.TryParse(tbCurrentDiscount.Text, out int currentDiscount) ? currentDiscount : 0,
                 ManufacturerId = (int)cbManufacturer.SelectedValue,
-                QuantityInStock = int.TryParse(tbQuantity.Text, out int quantity) ? quantity : 0,
+                QuantityInStock = int.Parse(tbQuantity.Text),
                 Status = tbStatus.Text
             };
 
